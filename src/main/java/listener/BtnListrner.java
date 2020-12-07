@@ -2,6 +2,7 @@ package listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
@@ -15,13 +16,35 @@ public class BtnListrner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if ("Exit" == e.getActionCommand()) {
-			Tools.windoexit();
+			try {
+				Tools.windoexit();
+			} catch (IOException ioException) {
+				ioException.printStackTrace();
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("Save")) {
-			Tools.Save();
+			try {
+				Tools.Save();
+			} catch (Exception ioException) {
+				ioException.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("Open")) {
-			Tools.Open();
+			try {
+				Tools.Open();
+			} catch (Exception ioException) {
+				ioException.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("New")) {
-			Tools.New();
+			try {
+				Tools.New();
+			} catch (Exception ioException) {
+				ioException.printStackTrace();
+			}
+		}
+		else if(e.getActionCommand().equals("Rotate"))
+		{
+			Tools.Rotate();
 		}
 	}
 

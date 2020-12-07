@@ -1,23 +1,22 @@
 package fileoper;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 import mygui.DrawShape;
 import shape.Shape;
+import utils.utils;
 
 public class SaveFile {
 	FileWriter fileWriter;
 	PrintWriter printWriter;
 	JFileChooser jFileChooser;
+	ObjectOutputStream out = null;
+	FileOutputStream fout = null;
 	public static boolean hassave=true;
-	public SaveFile() {
+	public SaveFile() throws Exception {
 		// TODO Auto-generated constructor stub
 		jFileChooser=new JFileChooser();
 		FileFilter filenameFilter=new FileFilter() {
@@ -41,21 +40,18 @@ public class SaveFile {
 		};
 		jFileChooser.setFileFilter(filenameFilter);
 		jFileChooser.showSaveDialog(null);
-		try {
-			fileWriter =new FileWriter(jFileChooser.getSelectedFile());
-			printWriter = new PrintWriter(fileWriter);
-			for (Shape s : DrawShape.shapes)
-				s.output(printWriter);
-			printWriter.close();
-			fileWriter.close();
+
+
+//			fileWriter =new FileWriter(jFileChooser.getSelectedFile());
+//			System.out.println();
+//			printWriter = new PrintWriter(fileWriter);
+//			System.out.println("filenameFilter"+filenameFilter);
+//			System.out.println("jFileChooser.getSelectedFile()"+jFileChooser.getSelectedFile());
+			utils.saveObject(DrawShape.shapes,jFileChooser.getSelectedFile());
+//			printWriter.close();
+//			fileWriter.close();
 			hassave=true;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 
 }

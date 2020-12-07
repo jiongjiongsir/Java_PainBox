@@ -2,6 +2,7 @@ package shape;
 
 import java.awt.Point;
 import java.lang.Math;
+import java.util.Vector;
 
 public class MyPoint extends Point {
 	public int x;
@@ -13,13 +14,18 @@ public class MyPoint extends Point {
 		this.y = y;
 	}
 
+	public void move(MyPoint myPoint,int dx, int dy) {
+		x = myPoint.x + dx;
+		y = myPoint.y + dy;
+	}
+
 	public void move(int dx, int dy) {
 		x = x + dx;
 		y = y + dy;
 	}
 
 	public void rotate(int alpha) {
-		double rad = (float)alpha / 180 * Math.PI;
+			double rad = (float)alpha / 180 * Math.PI;
 		int x1 = x;
 		int y1 = y;
 		x = (int) (x1 * Math.cos(rad) - y1 * Math.sin(rad));

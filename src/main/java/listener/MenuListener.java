@@ -2,6 +2,7 @@ package listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -17,15 +18,29 @@ public class MenuListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getActionCommand().equals("New")) {
-			Tools.New();
+			try {
+				Tools.New();
+			} catch (IOException ioException) {
+				ioException.printStackTrace();
+			} catch (Exception exception) {
+				exception.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("Open")) {
-			Tools.Open();
+			try {
+				Tools.Open();
+			} catch (Exception ioException) {
+				ioException.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("Revoke")) {
 			Tools.Revoke();
 		} else if (e.getActionCommand().equals("Help")) {
 			Tools.Help();
 		} else if (e.getActionCommand().equals("Save")) {
-			Tools.Save();
+			try {
+				Tools.Save();
+			} catch (Exception ioException) {
+				ioException.printStackTrace();
+			}
 		} else if (e.getActionCommand().equals("About")) {
 			Tools.About();
 		} else if (e.getActionCommand().equals("Clear")) {

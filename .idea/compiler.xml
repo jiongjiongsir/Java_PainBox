@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Drawpain" target="1.5" />
+      <module name="Drawpain" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>

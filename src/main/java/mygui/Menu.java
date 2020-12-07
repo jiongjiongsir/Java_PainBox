@@ -27,6 +27,7 @@ public class Menu extends JMenuBar {
 	public Menu() {
 		// TODO Auto-generated constructor stub
 		jMenu_File=new JMenu("File");
+//		设置当前窗口的键盘助记符 当按下alt+对应键时会使其激活
 		jMenu_File.setMnemonic(KeyEvent.VK_F);
 		jMenu_Edit=new JMenu("Edit");
 		jMenu_Edit.setMnemonic(KeyEvent.VK_E);

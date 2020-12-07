@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import listener.ColorHandler;
 import listener.LineWidthPanel;
+import mygui.DrawShape;
 
 public class Dot extends Shape {
 	private int num;
@@ -19,26 +20,26 @@ public class Dot extends Shape {
 		// TODO Auto-generated constructor stub
 	}
 	public Dot(Color color, int width, int x1, int y1, int x2, int y2) {
-		super(color, width, x1, y1, x2, y2);
+		super(color, width, x1, y1, x2, y2, DrawShape.OTHER);
 	}
 
 	public Dot(FileReader fileReader) throws IOException {
 		super(fileReader);
 		
 	}
-	public void readmore(FileReader fileReader) throws IOException {
-		char[] c = new char[10];
-		fileReader.read(c, 0, 10);
-		int x1 = Integer.parseInt(new String(c));
-		fileReader.read(c, 0, 10);
-		int y1 = Integer.parseInt(new String(c));
-		points.add(new MyPoint(x1, y1));
-		fileReader.read(c, 0, 10);
-		int x2 = Integer.parseInt(new String(c));
-		fileReader.read(c, 0, 10);
-		int y2 = Integer.parseInt(new String(c));
-		points.add(new MyPoint(x2, y2));
-	}
+//	public void readmore(FileReader fileReader) throws IOException {
+//		char[] c = new char[10];
+//		fileReader.read(c, 0, 10);
+//		int x1 = Integer.parseInt(new String(c));
+//		fileReader.read(c, 0, 10);
+//		int y1 = Integer.parseInt(new String(c));
+//		points.add(new MyPoint(x1, y1));
+//		fileReader.read(c, 0, 10);
+//		int x2 = Integer.parseInt(new String(c));
+//		fileReader.read(c, 0, 10);
+//		int y2 = Integer.parseInt(new String(c));
+//		points.add(new MyPoint(x2, y2));
+//	}
 
 	public String toString() {
 		return "Dot:" + super.toString();
@@ -83,5 +84,9 @@ public class Dot extends Shape {
 	public void setcolorwidth(Color color1,int width) {
 		lineWidth=width;
 		color=color1;
+	}
+	public void setType(int types)
+	{
+		type=types;
 	}
 }

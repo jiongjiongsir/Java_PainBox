@@ -5,6 +5,10 @@ import javax.swing.JOptionPane;
 import fileoper.OpenFile;
 import fileoper.SaveFile;
 import mygui.DrawShape;
+import shape.Shape;
+
+import java.awt.*;
+import java.io.IOException;
 
 public class Tools {
 	public static final int EXIT = 1;
@@ -12,7 +16,7 @@ public class Tools {
 	public static final int NEW = 3;
 
 	public static int type=0;
-	private static void Jopen() {
+	private static void Jopen() throws Exception {
 		OpenFile openFile = new OpenFile();
 		DrawShape.pnlDisplayArea.repaint();
 	}
@@ -22,7 +26,7 @@ public class Tools {
 		DrawShape.pnlDisplayArea.repaint();
 	}
 
-	public static int windoexit() {
+	public static int windoexit() throws Exception {
 		if (SaveFile.hassave == false) {
 			Object[] options = { "Save", "Not" };
 			int num;
@@ -51,15 +55,15 @@ public class Tools {
 		}
 	}
 
-	public static void Save() {
+	public static void Save() throws Exception {
 		SaveFile savefile = new SaveFile();
 	}
 
-	public static void Open() {
+	public static void Open() throws Exception {
 		judgesave(OPEN);
 	}
 
-	public static void New() {
+	public static void New() throws Exception {
 		judgesave(NEW);
 
 	}
@@ -85,7 +89,7 @@ public class Tools {
 		}
 		
 	}
-	public static void judgesave(int judge) {
+	public static void judgesave(int judge) throws Exception {
 		if (SaveFile.hassave == false) {
 			Object[] options = { "Save", "Not" };
 			int num;
@@ -126,4 +130,32 @@ public class Tools {
 		DrawShape.shapes.clear();
 		DrawShape.pnlDisplayArea.repaint();
 	}
+	public static void noSelect()
+	{
+		System.out.println(DrawShape.shapes.size());
+		for(Shape shape:DrawShape.shapes)
+		{
+			if(shape.isSel()==true)
+			{
+				System.out.println(shape);
+				shape.setSel(false);
+
+			}
+		}
+	}
+	public static void Rotate() {
+		for(Shape shape:DrawShape.shapes)
+		{
+			if(shape.isSel()==true)
+			{
+//					System.out.println(shape);
+
+				shape.rotate(90);
+				System.out.println(shape.getPoints());
+				DrawShape.pnlDisplayArea.repaint();
+
+			}
+		}
+	}
+
 }

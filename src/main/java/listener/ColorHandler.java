@@ -1,10 +1,7 @@
 
 package listener;
 
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import mygui.DrawShape;
+import shape.Shape;
 
 public class ColorHandler extends JPanel {
 	JColorChooser jColorChooser;
@@ -45,6 +43,18 @@ public class ColorHandler extends JPanel {
 				if (tempcolor != null) {
 					color = tempcolor;
 					DrawShape.lineWidthPanel.repaint();
+					for(Shape shape:DrawShape.shapes)
+					{
+						if(shape.isSel()==true)
+						{
+//					System.out.println(shape);
+
+							shape.setColor(color);
+							DrawShape.pnlDisplayArea.repaint();
+							//shape.DrawShape((Graphics2D) g);
+
+						}
+					}
 				}
 				jPanel.setBackground(color);
 			}

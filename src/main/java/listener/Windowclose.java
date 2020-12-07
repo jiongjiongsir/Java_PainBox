@@ -2,6 +2,7 @@ package listener;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 public class Windowclose implements WindowListener {
 
@@ -20,7 +21,13 @@ public class Windowclose implements WindowListener {
 	@Override
 	public void windowClosing(WindowEvent e) {
 		// TODO Auto-generated method stub
-		Tools.windoexit();
+		try {
+			Tools.windoexit();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
 	}
 
 	@Override

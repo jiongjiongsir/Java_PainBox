@@ -10,10 +10,11 @@ import java.io.PrintWriter;
 
 import listener.ColorHandler;
 import listener.LineWidthPanel;
+import mygui.DrawShape;
 
 public class Line extends Shape {
-	public Line(Color color, int width, int x1, int y1, int x2, int y2) {
-		super(color, width, x1, y1, x2, y2);
+	public Line(Color color, int width, int x1, int y1, int x2, int y2,int types) {
+		super(color, width, x1, y1, x2, y2, types);
 	}
 
 	public Line(FileReader fileReader) throws IOException {
@@ -34,6 +35,7 @@ public class Line extends Shape {
 		g.setStroke(new BasicStroke(lineWidth));
 		g.drawLine(points.firstElement().x, points.firstElement().y, points.lastElement().x, points.lastElement().y);
 		g.setColor(ColorHandler.color);
+//		为什么要再设置一遍线条宽度
 		g.setStroke(new BasicStroke(LineWidthPanel.width));
 
 	}
